@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract Crowdfunding {
-    IERC20 private token;
+    ERC20 private token;
 
     struct Campaign {
         address creator;
@@ -28,7 +28,7 @@ contract Crowdfunding {
 
     constructor(address _token) {
         require(_token != address(0), "Token address cannot be the zero address");
-        token = IERC20(_token);
+        token = ERC20(_token);
     }
 
     function createCampaign(uint256 goal, uint256 duration) external {
